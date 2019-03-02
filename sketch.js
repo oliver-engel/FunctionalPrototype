@@ -17,10 +17,6 @@ let transparency = 255;
 var projectile = true;
 var launchSound;
 
-
-
-
-
 function setup() {
 
 
@@ -39,8 +35,6 @@ function setup() {
   ready = loadImage('assets/ready_2.png');
   ball = loadImage('assets/ball.png');
 
-
-
   //Set up communication port
   serial = new p5.SerialPort();       // make a new instance of the serialport library
   serial.on('list', printList);  // set a callback function for the serialport list event
@@ -58,7 +52,7 @@ var ballX = 465;
 var ballY = -100;
 let alpha = 0;
 
-
+//Main loop
 function draw() {
   // set background to black
   background(30, 30, 30);
