@@ -95,7 +95,7 @@ i{
 .main-interface{
   /* width:100%; */
   text-align: center;
-  padding:50px;
+  /* padding:50px; */
   background: var(--red);
   overflow: hidden;
 }
@@ -166,6 +166,10 @@ i{
 
 .potential-graph{
 
+}
+
+.fa-weight-hanging{
+  opacity:.4;
 }
 
 #pot-energy-color{

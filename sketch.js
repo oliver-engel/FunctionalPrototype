@@ -20,7 +20,7 @@ var launchSound;
 var sendVal = 5;
 
 let cloud_1_x = 0;
-let dim = 80.0;
+let dim =80.0;
 
 function setup() {
 
@@ -71,15 +71,17 @@ function draw() {
   smooth(0);
 
   push();
-    cloud_1_x = cloud_1_x + 0.5;
+    cloud_1_x = cloud_1_x + 0.8;
 
-    if (cloud_1_x > width + dim) {
-      cloud_1_x = -dim;
+    // console.log("cloud_1_x" + cloud_1_x);
+
+    if (cloud_1_x > 3500) {
+      cloud_1_x = -600;
     }
     scale(.35);
     translate(cloud_1_x, height / 2 - dim / 2);
     // rect(-dim / 2, -dim / 2, dim, dim);
-    image(cloud_1, -dim / 2, -dim / 2);
+    image(cloud_1, -600, 150);
   pop();
 
   //Get the angle; for Arduino-less testing, keep as mouseX.
@@ -91,7 +93,7 @@ function draw() {
 
   //Scale and translate the whole thing
   scale(.4);
-  translate(475,300);
+  translate(610,300);
 
   push();
       //Set the position
@@ -209,8 +211,17 @@ var myChart = new Chart(ctx, {
             xAxes: [{
                 ticks: {
                     beginAtZero:true
+                },
+                gridLines:{
+                  color: 'rgba(255, 255, 255, 0)'
                 }
-            }]
+            }],
+
+            yAxes: [{
+              gridLines:{
+                color: 'rgba(255, 255, 255, 0)'
+              }
+              }],
         },
         responsive: true
         ,
@@ -223,7 +234,9 @@ var myChart = new Chart(ctx, {
             top: 0,
             bottom: 0
         }
-    }
+      }
+
+
     }
 });
 
