@@ -50,18 +50,146 @@
         <div class="sidebar-inner">
 
           <div class="toggle-headers">
-            <h1 class="toggle-header-active experiment-toggler">Experiment</h1>
-            <h1 class=" challenge-toggler">Challenges</h1>
+            <h1 class="experiment-toggler" id="xp">Experiment</h1>
+            <h1 class="challenge-toggler" id="ch">Challenges</h1>
           </div>
 
           <div class="toggle-sidebar-content">
 
-            <div class="experiment">
-              <h1>Experiment</h1>
+            <div class="showing-experiment">
+
+              <div class="experiment">
+                <h3><i id="pot-energy-color" class="fas fa-square"></i> Potential energy</h3>
+                <h3><i id="kin-energy-color" class="fas fa-square"></i> Kinetic energy</h3>
+              </div>
+
+              <div class="trial">
+
+                <div class="trial-header">
+                  <section class="trial-number">Trial #1</section>
+                  <section class="weight-number">5 Weights</section>
+                </div>
+
+                <div class="trial-potential">
+                  <!-- <section class="potential-number">10 J</section> -->
+                  <section class="potential-graph"><canvas id="myChart" width="400" height="200"></canvas></section>
+                </div>
+
+                <!-- <div class="trial-kinetic">
+                  <section class="kinetic-number">10 J</section>
+                  <section class="kinetic-graph">Graph here</section>
+                </div> -->
+
+              </div>
+
+              <div class="trial">
+
+                <div class="trial-header">
+                  <section class="trial-number">Trial #1</section>
+                  <section class="weight-number">5 Weights</section>
+                </div>
+
+                <div class="trial-potential">
+                  <section class="potential-number">10 J</section>
+                  <section class="potential-graph">Graph here</section>
+                </div>
+
+                <div class="trial-kinetic">
+                  <section class="kinetic-number">10 J</section>
+                  <section class="kinetic-graph">Graph here</section>
+                </div>
+
+              </div>
+
+              <div class="trial">
+
+                <div class="trial-header">
+                  <section class="trial-number">Trial #1</section>
+                  <section class="weight-number">5 Weights</section>
+                </div>
+
+                <div class="trial-potential">
+                  <section class="potential-number">10 J</section>
+                  <section class="potential-graph">Graph here</section>
+                </div>
+
+                <div class="trial-kinetic">
+                  <section class="kinetic-number">10 J</section>
+                  <section class="kinetic-graph">Graph here</section>
+                </div>
+
+              </div>
+
+              <div class="trial">
+
+                <div class="trial-header">
+                  <section class="trial-number">Trial #1</section>
+                  <section class="weight-number">5 Weights</section>
+                </div>
+
+                <div class="trial-potential">
+                  <section class="potential-number">10 J</section>
+                  <section class="potential-graph">Graph here</section>
+                </div>
+
+                <div class="trial-kinetic">
+                  <section class="kinetic-number">10 J</section>
+                  <section class="kinetic-graph">Graph here</section>
+                </div>
+
+              </div>
+
+              <div class="trial">
+
+                <div class="trial-header">
+                  <section class="trial-number">Trial #1</section>
+                  <section class="weight-number">5 Weights</section>
+                </div>
+
+                <div class="trial-potential">
+                  <section class="potential-number">10 J</section>
+                  <section class="potential-graph">Graph here</section>
+                </div>
+
+                <div class="trial-kinetic">
+                  <section class="kinetic-number">10 J</section>
+                  <section class="kinetic-graph">Graph here</section>
+                </div>
+
+              </div>
+
+              <div class="trial">
+
+                <div class="trial-header">
+                  <section class="trial-number">Trial #1</section>
+                  <section class="weight-number">5 Weights</section>
+                </div>
+
+                <div class="trial-potential">
+                  <section class="potential-number">10 J</section>
+                  <section class="potential-graph">Graph here</section>
+                </div>
+
+                <div class="trial-kinetic">
+                  <section class="kinetic-number">10 J</section>
+                  <section class="kinetic-graph">Graph here</section>
+                </div>
+
+              </div>
             </div>
 
-            <div class="challenge">
-              <h1>Challenge</h1>
+
+
+
+
+
+
+
+            <div class="showing-challenge">
+              <div class="challenge">
+                <h3>Challenge</h3>
+
+              </div>
             </div>
 
           </div>
@@ -75,6 +203,7 @@
 
 
     <!-- <script src="sketch-javan.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -82,6 +211,52 @@
 
     <script src="sketch.js"></script>
     <script src="script.js"></script>
+
+
+    <script>
+    // var ctx = document.getElementById("myChart").getContext('2d');
+    // var myChart = new Chart(ctx, {
+    //     type: 'horizontalBar',
+    //     data: {
+    //         labels: ["", ""],
+    //         datasets: [{
+    //             label: 'Joules of energy',
+    //             data: [19, 13],
+    //             backgroundColor: [
+    //                 'rgb(236, 96, 62)',
+    //                 'rgb(236, 208, 63)'
+    //
+    //             ],
+    //
+    //             borderWidth: 0
+    //         }]
+    //     },
+    //     options: {
+    //       legend:{
+    //         display:false
+    //       },
+    //         scales: {
+    //             xAxes: [{
+    //                 ticks: {
+    //                     beginAtZero:true
+    //                 }
+    //             }]
+    //         },
+    //         responsive: true
+    //         ,
+    //         maintainAspectRatio: false,
+    //
+    //         layout: {
+    //         padding: {
+    //             left: -20,
+    //             right: 0,
+    //             top: 0,
+    //             bottom: 0
+    //         }
+    //     }
+    //     }
+    // });
+    </script>
 
   </body>
 </html>

@@ -27,7 +27,8 @@ $( document ).ready(function() {
 
   AppearItem();
 
-	$('.challenge').hide();
+	$('.showing-challenge').hide();
+	$('.challenge-toggler').fadeTo( "fast", .33 );
 
 });
 
@@ -70,10 +71,13 @@ $('.experiment-toggler').on(
   'click',
   function()
   {
-    $('.experiment').show();
-		$('.challenge').hide();
+    $('.showing-experiment').show();
+		$('.showing-challenge').hide();
 		$('.experiment-toggler').fadeTo( "fast", 1 );
 		$('.challenge-toggler').fadeTo( "fast", .33 );
+
+		document.getElementById("xp").style.borderBottom = "3px solid white";
+		document.getElementById("ch").style.borderBottom = "none";
 
   }
 );
@@ -82,7 +86,14 @@ $('.challenge-toggler').on(
   'click',
   function()
   {
-    $('.experiment').hide();
-		$('.challenge').show();
+    $('.showing-experiment').hide();
+		$('.showing-challenge').show();
+
+		$('.challenge-toggler').fadeTo( "fast", 1 );
+		$('.experiment-toggler').fadeTo( "fast", .33 );
+
+		document.getElementById("ch").style.borderBottom = "3px solid white";
+		document.getElementById("xp").style.borderBottom = "none";
+
   }
 );

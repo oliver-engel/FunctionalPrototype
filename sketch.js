@@ -17,6 +17,11 @@ let transparency = 255;
 var projectile = true;
 var launchSound;
 
+var sendVal = 5;
+
+let cloud_1_x = 0;
+let dim = 80.0;
+
 function setup() {
 
 
@@ -28,7 +33,7 @@ function setup() {
   var widthParent = document.getElementById('trebuchet-animation-holder').offsetWidth;
   var heightParent = document.getElementById('trebuchet-animation-holder').offsetHeight;
 
-  var canvas = createCanvas(widthParent, 400);
+  var canvas = createCanvas(widthParent, 450);
   canvas.parent('trebuchet-animation-holder');
   console.log(heightParent);
   angleMode(DEGREES);
@@ -40,6 +45,7 @@ function setup() {
   weight = loadImage('assets/weight-red.png');
   ready = loadImage('assets/ready.png');
   ball = loadImage('assets/ball.png');
+  cloud_1 = loadImage('assets/cloud-1.png');
 
   //Set up communication port
   serial = new p5.SerialPort();       // make a new instance of the serialport library
@@ -64,15 +70,28 @@ function draw() {
   background(236, 96, 62);
   smooth(0);
 
+  push();
+    cloud_1_x = cloud_1_x + 0.5;
+
+    if (cloud_1_x > width + dim) {
+      cloud_1_x = -dim;
+    }
+    scale(.35);
+    translate(cloud_1_x, height / 2 - dim / 2);
+    // rect(-dim / 2, -dim / 2, dim, dim);
+    image(cloud_1, -dim / 2, -dim / 2);
+  pop();
+
   //Get the angle; for Arduino-less testing, keep as mouseX.
   //If you have the arduino set up, change 'mouseX' to 'inData'.
   var angle = map(mouseX,0,255,0,300);
+  sendVal = angle;
 
   // console.log(angle);
 
   //Scale and translate the whole thing
-  scale(.5);
-  translate(200,0);
+  scale(.4);
+  translate(475,300);
 
   push();
       //Set the position
@@ -139,6 +158,8 @@ function draw() {
   pop();
 
 
+
+
   //Draw the support
   image(support, 212, 225);
 
@@ -160,6 +181,75 @@ function draw() {
     pop();
   }
 }
+
+
+
+
+
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ["", ""],
+        datasets: [{
+            label: 'Joules of energy',
+            data: [sendVal, 13],
+            backgroundColor: [
+                'rgb(236, 96, 62)',
+                'rgb(236, 208, 63)'
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+      legend:{
+        display:false
+      },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+        responsive: true
+        ,
+        maintainAspectRatio: false,
+
+        layout: {
+        padding: {
+            left: -20,
+            right: 0,
+            top: 0,
+            bottom: 0
+        }
+    }
+    }
+});
+
+
+
+
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // DONT TOUCH THIS

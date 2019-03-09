@@ -19,6 +19,7 @@
   --black : #1E1E1E;
   --red   : #EC603E;
   --dark-red : #3C1911;
+  --yellow: #ECD03E;
 }
 
 
@@ -96,6 +97,7 @@ i{
   text-align: center;
   padding:50px;
   background: var(--red);
+  overflow: hidden;
 }
 
 .weight-counter{
@@ -116,9 +118,14 @@ i{
   font-weight: 400;
 }
 
+.toggle-sidebar-content{
+  margin-top:100px;
+}
+
 .sidebar{
 
   background: var(--dark-red);
+  overflow: auto;
 
 }
 
@@ -128,11 +135,18 @@ i{
 
 .toggle-headers{
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr .5fr;
+  position: fixed;
+  background-color: var(--dark-red);
+  z-index: 1000;
+  margin-top:-50px;
+  padding-top:50px;
+  /* width:100%; */
 }
 
 .toggle-headers:hover{
   cursor: pointer;
+
 }
 
 .toggle-header-active{
@@ -143,4 +157,58 @@ i{
 
 .toggle-header-inactive{
   opacity:.4;
+}
+
+.experiment{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.potential-graph{
+
+}
+
+#pot-energy-color{
+  color: var(--red);
+  font-size:22px;
+  margin-right:15px;
+  transform: translateY(2px);
+}
+
+#kin-energy-color{
+  color: var(--yellow);
+  font-size:22px;
+  margin-right:15px;
+  transform: translateY(2px);
+}
+
+#xp{
+  width:142px;
+  border-bottom: white solid 3px;
+}
+
+#ch{
+  margin-left:25px;
+  width:135px;
+}
+
+.challenge{
+  position: relative;
+}
+
+
+/* TRIALS */
+
+.trial{
+  font-family : Calibre,
+                sans-serif;
+                margin-top:50px;
+}
+
+.trial-header{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 22px;
+  color:white;
+  font-weight : 500;
 }
