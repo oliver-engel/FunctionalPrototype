@@ -23,6 +23,10 @@ Function AppearItem
 	}//End AppearItem
 
 
+	/*--------------------------------------------------
+	First-time functions
+	---------------------------------------------------*/
+
 $( document ).ready(function() {
 
   AppearItem();
@@ -43,22 +47,43 @@ $( document ).ready(function() {
 
 });
 
+/*--------------------------------------------------
+Adding charts to the list under experiments
+---------------------------------------------------*/
+
+var trialValue = 0;
+
 function appendChart(){
-	$( ".trial-list" ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial bitch</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; 5 Weights</section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart-3' width='400' height='200'></canvas></section></div></div>" );
+	$( ".trial-list" ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial bitch</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; <span id='weight-tracking'>5 Weights</span></section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart-3' width='400' height='200'></canvas></section></div></div>" );
+
+	// var chartID = document.getElementById("chart-x");
+	// chartID.innerHTML = "chart-3";
+
 	makeChart("chart-3");
 
 	//Change this later
-	var trialValue = 5;
+	trialValue++;
 
 	var trialNumName = document.getElementById("trial-number-name");
 	trialNumName.innerHTML = "Trial #" + trialValue;
+
+	var numWeights = document.getElementById("weight-tracking");
+	numWeights.innerHTML =  globalWeight + " Weights";
+
+	// var chartID = document.getElementById("chart-x");
+	// chartID.innerHTML = "chart-" + trialValue;
+
+	// var potentialEValue = document.getElementById("trial-number-name")
+	// potentialEValue.innerHTML = curPotentialEnergy;
 
 	// var trialNum = document.getElementById("trial-x");
 	// trialNum.id = "trial-3";
 }
 
 
-//Drawing charts
+/*--------------------------------------------------
+Drawing new charts
+---------------------------------------------------*/
 function makeChart(id){
 
   var ctx = document.getElementById(id).getContext('2d');
@@ -68,7 +93,7 @@ function makeChart(id){
           labels: ["", ""],
           datasets: [{
               label: 'Joules of energy',
-              data: [10, 10],
+              data: [trialValue, 10],
               backgroundColor: [
                   'rgb(236, 96, 62)',
                   'rgb(236, 208, 63)'
@@ -114,24 +139,6 @@ function makeChart(id){
 
 
 
-
-
-function addData(chart, data) {
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
-}
-
-const args = [5, 10];
-function updateChart(chart){
-    chart.data.datasets[0].data = [5,5];
-    chart.update();
-}
-
-
-// setInterval(updateChart('chart-1'), 3000);
-
 var globalWeight=0;
 var curPotentialEnergy=0;
 
@@ -167,6 +174,7 @@ function decrementValue()
 //Setting potential energy value
 function potentialEnergy(value){
 	document.getElementById("potential-energy-value").innerHTML = value + " J";
+	curPotentialEnergy = value;
 }
 
 //Toggling the experiment section
