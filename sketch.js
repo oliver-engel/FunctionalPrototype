@@ -219,7 +219,8 @@ var myChart = new Chart(ctx, {
 
             yAxes: [{
               gridLines:{
-                color: 'rgba(255, 255, 255, 0)'
+                color: 'rgba(255, 255, 255, 0)',
+                zeroLineColor: 'rgba(255, 255, 255, 0)'
               }
               }],
         },

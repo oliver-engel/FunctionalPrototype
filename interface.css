@@ -1,7 +1,7 @@
 @font-face {
   font-family : 'Calibre';
   font-style  : normal;
-  font-weight : 600;
+  font-weight : 500;
   src         : url('fonts/Calibre-Semibold.woff2') format('woff2'),
                 url('fonts/Calibre-Semibold.woff') format('woff');
 }
@@ -9,7 +9,7 @@
 @font-face {
   font-family : 'Calibre';
   font-style  : normal;
-  font-weight : normal;
+  font-weight : 400;
   src         : url('fonts/Calibre-Regular.woff2') format('woff2'),
                 url('fonts/Calibre-Regular.woff') format('woff');
 }
@@ -27,6 +27,10 @@ body{
   margin  : 0px;
   padding : 0px;
   font-size: 16px;
+  font-weight : 400;
+
+  -webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
 h1{
@@ -34,10 +38,10 @@ h1{
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family : Calibre,
+  font-family : 'Calibre',
                 sans-serif;
   font-style  : normal;
-  font-weight : 500;
+  font-weight : 400;
   color:white;
 }
 
@@ -49,10 +53,11 @@ i{
 .value-large{
   font-size:74px;
   margin-bottom:0px;
+  padding-bottom:0px;
 }
 
 .value-label{
-  margin-top:0px;
+  margin-top:-15px;
 }
 
 
