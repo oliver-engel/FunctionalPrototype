@@ -1,0 +1,146 @@
+@font-face {
+  font-family : 'Calibre';
+  font-style  : normal;
+  font-weight : 600;
+  src         : url('fonts/Calibre-Semibold.woff2') format('woff2'),
+                url('fonts/Calibre-Semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family : 'Calibre';
+  font-style  : normal;
+  font-weight : normal;
+  src         : url('fonts/Calibre-Regular.woff2') format('woff2'),
+                url('fonts/Calibre-Regular.woff') format('woff');
+}
+
+:root {
+  --beige : #F2ECE2;
+  --black : #1E1E1E;
+  --red   : #EC603E;
+  --dark-red : #3C1911;
+}
+
+
+body{
+  margin  : 0px;
+  padding : 0px;
+  font-size: 16px;
+}
+
+h1{
+  font-size: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family : Calibre,
+                sans-serif;
+  font-style  : normal;
+  font-weight : 500;
+  color:white;
+}
+
+i{
+  color:white;
+  font-size: .8em;
+}
+
+.value-large{
+  font-size:74px;
+  margin-bottom:0px;
+}
+
+.value-label{
+  margin-top:0px;
+}
+
+
+
+.interface-container{
+
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+
+  height:100vh;
+}
+
+#trebuchet-animation-holder{
+  width:100%;
+  height:400px;
+}
+
+#weight-changer{
+  font-size:2em;
+  display: inline-block;
+  width:50px;
+  user-select: none;
+}
+
+.weight-button{
+  /* transform: translateY(-10px); */
+  color: var(--dark-red);
+  opacity:.25;
+  width:100px;
+  font-size:1.5em;
+}
+
+.weight-button:hover{
+  color:white;
+  opacity:1;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.main-interface{
+  /* width:100%; */
+  text-align: center;
+  padding:50px;
+  background: var(--red);
+}
+
+.weight-counter{
+  margin-top:50px;
+  margin-bottom:50px;
+ text-align: center;
+ height:200px;
+
+ display: grid;
+ justify-content: center;
+ align-items: center;
+ height: 100px;
+}
+
+.energy-outputs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-weight: 400;
+}
+
+.sidebar{
+
+  background: var(--dark-red);
+
+}
+
+.sidebar-inner{
+  padding:50px;
+}
+
+.toggle-headers{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.toggle-headers:hover{
+  cursor: pointer;
+}
+
+.toggle-header-active{
+  opacity:1;
+  border-bottom: 3px solid white;
+  width:140px;
+}
+
+.toggle-header-inactive{
+  opacity:.4;
+}

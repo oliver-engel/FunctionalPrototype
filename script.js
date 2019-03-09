@@ -26,4 +26,63 @@ Function AppearItem
 $( document ).ready(function() {
 
   AppearItem();
+
+	$('.challenge').hide();
+
 });
+
+
+function incrementValue()
+{
+    var value = parseInt(document.getElementById('weight-changer').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+    document.getElementById('weight-changer').value = value;
+		document.getElementById('weight-changer').innerHTML = value;
+		console.log(value);
+}
+
+function decrementValue()
+{
+    var value = parseInt(document.getElementById('weight-changer').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value--;
+    document.getElementById('weight-changer').value = value;
+		document.getElementById('weight-changer').innerHTML = value;
+		console.log(value);
+
+}
+
+
+
+// $('.experiment, .challenge').hide();
+
+// $('.experiment, .challenge').on(
+//   'click',
+//   function()
+//   {
+//     $('.experiment, .challenge').toggle()
+//   }
+// );
+
+
+$('.experiment-toggler').on(
+  'click',
+  function()
+  {
+    $('.experiment').show();
+		$('.challenge').hide();
+		$('.experiment-toggler').fadeTo( "fast", 1 );
+		$('.challenge-toggler').fadeTo( "fast", .33 );
+
+  }
+);
+
+$('.challenge-toggler').on(
+  'click',
+  function()
+  {
+    $('.experiment').hide();
+		$('.challenge').show();
+  }
+);

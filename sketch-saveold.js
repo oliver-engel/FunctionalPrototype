@@ -25,20 +25,16 @@ function setup() {
 
   //set up canvas
   // createCanvas(windowWidth, windowHeight);
-  var widthParent = document.getElementById('trebuchet-animation-holder').offsetWidth;
-  var heightParent = document.getElementById('trebuchet-animation-holder').offsetHeight;
-
-  var canvas = createCanvas(widthParent, 400);
-  canvas.parent('trebuchet-animation-holder');
-  console.log(heightParent);
+  var canvas = createCanvas(500, 600);
+  canvas.parent('sketch-holder');
   angleMode(DEGREES);
   noStroke();
 
   //images
-  support = loadImage('assets/support-red.png');
-  arm = loadImage('assets/arm-red.png');
-  weight = loadImage('assets/weight-red.png');
-  ready = loadImage('assets/ready.png');
+  support = loadImage('assets/support.png');
+  arm = loadImage('assets/arm.png');
+  weight = loadImage('assets/weight.png');
+  ready = loadImage('assets/ready_2.png');
   ball = loadImage('assets/ball.png');
 
   //Set up communication port
@@ -61,18 +57,18 @@ let alpha = 0;
 //Main loop
 function draw() {
   // set background to black
-  background(236, 96, 62);
+  background(30, 30, 30);
   smooth(0);
 
   //Get the angle; for Arduino-less testing, keep as mouseX.
   //If you have the arduino set up, change 'mouseX' to 'inData'.
   var angle = map(mouseX,0,255,0,300);
 
-  // console.log(angle);
+  console.log(angle);
 
   //Scale and translate the whole thing
-  scale(.5);
-  translate(200,0);
+  scale(.35);
+  translate(100,300);
 
   push();
       //Set the position

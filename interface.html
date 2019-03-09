@@ -1,0 +1,87 @@
+<!-- the html wrapper for p5.js sketch -->
+<!-- the main sketch is written is sketch.js  -->
+
+<!DOCTYPE html><html><head>
+    <title>Trebuchet Trials</title>
+    <script src="p5.min.js"></script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="p5.serialport.js"></script>
+    <link rel="stylesheet" type="text/css" href="interface.css">
+    <link rel="stylesheet" href="https://use.typekit.net/fsv2put.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <meta charset="utf-8">
+
+  </head>
+  <body>
+
+  <div class="interface-container">
+
+
+
+      <div class="main-interface">
+        <section id="trebuchet-animation-holder">
+          <!-- <h1>P5 JS Sketch here</h1> -->
+        </section>
+
+        <section class="weight-counter">
+
+          <h1 style="margin-bottom:0px;"><i onclick="decrementValue()" class="weight-button fas fa-minus"></i><span id="weight-changer">0</span><i onclick="incrementValue()" class="weight-button fas fa-plus"></i></h1>
+          <h1 class="value-label">How many weights?</h1>
+        </section>
+
+        <section class="energy-outputs">
+          <div>
+            <h1 class="value-large">0 J</h1>
+            <h1 class="value-label">Potential Energy</h1>
+          </div>
+
+          <div>
+            <h1 class="value-large">0 J</h1>
+            <h1 class="value-label">Kinetic Energy</h1>
+          </div>
+        </section>
+
+
+      </div>
+
+
+      <div class="sidebar">
+        <div class="sidebar-inner">
+
+          <div class="toggle-headers">
+            <h1 class="toggle-header-active experiment-toggler">Experiment</h1>
+            <h1 class=" challenge-toggler">Challenges</h1>
+          </div>
+
+          <div class="toggle-sidebar-content">
+
+            <div class="experiment">
+              <h1>Experiment</h1>
+            </div>
+
+            <div class="challenge">
+              <h1>Challenge</h1>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+  </div>
+
+
+
+    <!-- <script src="sketch-javan.js"></script> -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <script src="sketch.js"></script>
+    <script src="script.js"></script>
+
+  </body>
+</html>
