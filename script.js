@@ -92,8 +92,9 @@ function makeChart(id){
       data: {
           labels: ["", ""],
           datasets: [{
-              label: 'Joules of energy',
-              data: [trialValue, 10],
+              label: ' Joules of energy',
+							//Taking in the data. Replace second number with kinetic energy.
+              data: [curPotentialEnergy, 10],
               backgroundColor: [
                   'rgb(236, 96, 62)',
                   'rgb(236, 208, 63)'
@@ -109,6 +110,8 @@ function makeChart(id){
           scales: {
               xAxes: [{
                   ticks: {
+											//Set max value on horizontal scale here
+											max:50,
                       beginAtZero:true,
                       fontColor: "#CCC"
                   },
