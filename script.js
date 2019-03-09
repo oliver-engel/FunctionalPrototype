@@ -33,8 +33,12 @@ $( document ).ready(function() {
 	makeChart("chart-1");
 	makeChart("chart-2");
 	// makeChart("chart-3");
+	potentialEnergy(0);
 
 });
+
+var globalWeight=0;
+var curPotentialEnergy=0;
 
 
 function incrementValue()
@@ -44,7 +48,11 @@ function incrementValue()
     value++;
     document.getElementById('weight-changer').value = value;
 		document.getElementById('weight-changer').innerHTML = value;
-		console.log(value);
+		globalWeight=value;
+
+		//Make update to the potential energy
+		//Plug in (m)(g)(h) here
+		potentialEnergy(globalWeight * 9 * .5);
 }
 
 function decrementValue()
@@ -54,23 +62,19 @@ function decrementValue()
     value--;
     document.getElementById('weight-changer').value = value;
 		document.getElementById('weight-changer').innerHTML = value;
-		console.log(value);
+		globalWeight=value;
 
+		//Make update to the potential energy
+		//Plug in (m)(g)(h) here
+		potentialEnergy(globalWeight);
 }
 
+//Setting potential energy value
+function potentialEnergy(value){
+	document.getElementById("potential-energy-value").innerHTML = value + " J";
+}
 
-
-// $('.experiment, .challenge').hide();
-
-// $('.experiment, .challenge').on(
-//   'click',
-//   function()
-//   {
-//     $('.experiment, .challenge').toggle()
-//   }
-// );
-
-
+//Toggling the experiment section
 $('.experiment-toggler').on(
   'click',
   function()
@@ -79,31 +83,27 @@ $('.experiment-toggler').on(
 		$('.showing-challenge').hide();
 		$('.experiment-toggler').fadeTo( "fast", 1 );
 		$('.challenge-toggler').fadeTo( "fast", .33 );
-
 		document.getElementById("xp").style.borderBottom = "3px solid white";
 		document.getElementById("ch").style.borderBottom = "none";
-
   }
 );
 
+//Toggling the challenge section
 $('.challenge-toggler').on(
   'click',
   function()
   {
     $('.showing-experiment').hide();
 		$('.showing-challenge').show();
-
 		$('.challenge-toggler').fadeTo( "fast", 1 );
 		$('.experiment-toggler').fadeTo( "fast", .33 );
-
 		document.getElementById("ch").style.borderBottom = "3px solid white";
 		document.getElementById("xp").style.borderBottom = "none";
-
   }
 );
 
 
-
+//Drawing charts
 function makeChart(id){
 
   var ctx = document.getElementById(id).getContext('2d');
@@ -136,17 +136,14 @@ function makeChart(id){
                     display : false
                   }
               }],
-
               yAxes: [{
                 gridLines:{
                   display : false
                 }
                 }],
           },
-          responsive: true
-          ,
+          responsive: true,
           maintainAspectRatio: false,
-
           layout: {
           padding: {
               left: -20,
