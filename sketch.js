@@ -89,7 +89,7 @@ function draw() {
   var angle = map(mouseX,0,255,0,300);
   sendVal = angle/30;
 
-  // console.log(sendVal);
+  // console.log(int(sendVal));
 
   //Scale and translate the whole thing
   scale(.4);
@@ -183,23 +183,6 @@ function draw() {
     pop();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

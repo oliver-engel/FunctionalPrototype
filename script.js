@@ -20,7 +20,7 @@ Function AppearItem
 			});
 		});
 
-	}//End AppearIteam
+	}//End AppearItem
 
 
 $( document ).ready(function() {
@@ -31,11 +31,106 @@ $( document ).ready(function() {
 	$('.challenge-toggler').fadeTo( "fast", .33 );
 
 	makeChart("chart-1");
-	makeChart("chart-2");
+	// makeChart("chart-2");
+	// makeChart("chart-3");
+	// makeChart("chart-2", 6);
 	// makeChart("chart-3");
 	potentialEnergy(0);
 
+  appendChart();
+	//makeChart("chart-3");
+
+
 });
+
+function appendChart(){
+	$( ".trial-list" ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial bitch</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; 5 Weights</section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart-3' width='400' height='200'></canvas></section></div></div>" );
+	makeChart("chart-3");
+
+	//Change this later
+	var trialValue = 5;
+
+	var trialNumName = document.getElementById("trial-number-name");
+	trialNumName.innerHTML = "Trial #" + trialValue;
+
+	// var trialNum = document.getElementById("trial-x");
+	// trialNum.id = "trial-3";
+}
+
+
+//Drawing charts
+function makeChart(id){
+
+  var ctx = document.getElementById(id).getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+          labels: ["", ""],
+          datasets: [{
+              label: 'Joules of energy',
+              data: [10, 10],
+              backgroundColor: [
+                  'rgb(236, 96, 62)',
+                  'rgb(236, 208, 63)'
+              ],
+              borderWidth: 0
+          }]
+      },
+      options: {
+        scaleShowVerticalLines: false,
+        legend:{
+          display:false
+        },
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      beginAtZero:true,
+                      fontColor: "#CCC"
+                  },
+                  gridLines:{
+                    display : false
+                  }
+              }],
+              yAxes: [{
+                gridLines:{
+                  display : false
+                }
+                }],
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: {
+          padding: {
+              left: -20,
+              right: 0,
+              top: 0,
+              bottom: 0
+          }
+        }
+      }
+  });
+}
+
+
+
+
+
+
+function addData(chart, data) {
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
+const args = [5, 10];
+function updateChart(chart){
+    chart.data.datasets[0].data = [5,5];
+    chart.update();
+}
+
+
+// setInterval(updateChart('chart-1'), 3000);
 
 var globalWeight=0;
 var curPotentialEnergy=0;
@@ -101,58 +196,3 @@ $('.challenge-toggler').on(
 		document.getElementById("xp").style.borderBottom = "none";
   }
 );
-
-
-//Drawing charts
-function makeChart(id){
-
-  var ctx = document.getElementById(id).getContext('2d');
-  var myChart = new Chart(ctx, {
-      type: 'horizontalBar',
-      data: {
-          labels: ["", ""],
-          datasets: [{
-              label: 'Joules of energy',
-              data: [sendVal, 13],
-              backgroundColor: [
-                  'rgb(236, 96, 62)',
-                  'rgb(236, 208, 63)'
-              ],
-              borderWidth: 0
-          }]
-      },
-      options: {
-        scaleShowVerticalLines: false,
-        legend:{
-          display:false
-        },
-          scales: {
-              xAxes: [{
-                  ticks: {
-                      beginAtZero:true,
-                      fontColor: "#CCC"
-                  },
-                  gridLines:{
-                    display : false
-                  }
-              }],
-              yAxes: [{
-                gridLines:{
-                  display : false
-                }
-                }],
-          },
-          responsive: true,
-          maintainAspectRatio: false,
-          layout: {
-          padding: {
-              left: -20,
-              right: 0,
-              top: 0,
-              bottom: 0
-          }
-        }
-      }
-  });
-
-}
