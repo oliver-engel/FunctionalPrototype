@@ -87,9 +87,9 @@ function draw() {
   //Get the angle; for Arduino-less testing, keep as mouseX.
   //If you have the arduino set up, change 'mouseX' to 'inData'.
   var angle = map(mouseX,0,255,0,300);
-  sendVal = angle;
+  sendVal = angle/30;
 
-  // console.log(angle);
+  console.log(sendVal);
 
   //Scale and translate the whole thing
   scale(.4);
@@ -188,69 +188,7 @@ function draw() {
 
 
 
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-        labels: ["", ""],
-        datasets: [{
-            label: 'Joules of energy',
-            data: [sendVal, 13],
-            backgroundColor: [
-                'rgb(236, 96, 62)',
-                'rgb(236, 208, 63)'
-            ],
-            borderWidth: 0
-        }]
-    },
-    options: {
-      legend:{
-        display:false
-      },
-        scales: {
-            xAxes: [{
-                ticks: {
-                    beginAtZero:true
-                },
-                gridLines:{
-                  color: 'rgba(255, 255, 255, 0)'
-                }
-            }],
 
-            yAxes: [{
-              gridLines:{
-                color: 'rgba(255, 255, 255, 0)',
-                zeroLineColor: 'rgba(255, 255, 255, 0)'
-              }
-              }],
-        },
-        responsive: true
-        ,
-        maintainAspectRatio: false,
-
-        layout: {
-        padding: {
-            left: -20,
-            right: 0,
-            top: 0,
-            bottom: 0
-        }
-      }
-
-
-    }
-});
-
-
-
-
-function addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(data);
-    });
-    chart.update();
-}
 
 
 

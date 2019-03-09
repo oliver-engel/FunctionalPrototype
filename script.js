@@ -30,6 +30,10 @@ $( document ).ready(function() {
 	$('.showing-challenge').hide();
 	$('.challenge-toggler').fadeTo( "fast", .33 );
 
+	makeChart("chart-1");
+	makeChart("chart-2");
+	// makeChart("chart-3");
+
 });
 
 
@@ -97,3 +101,61 @@ $('.challenge-toggler').on(
 
   }
 );
+
+
+
+function makeChart(id){
+
+  var ctx = document.getElementById(id).getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+          labels: ["", ""],
+          datasets: [{
+              label: 'Joules of energy',
+              data: [sendVal, 13],
+              backgroundColor: [
+                  'rgb(236, 96, 62)',
+                  'rgb(236, 208, 63)'
+              ],
+              borderWidth: 0
+          }]
+      },
+      options: {
+        scaleShowVerticalLines: false,
+        legend:{
+          display:false
+        },
+          scales: {
+              xAxes: [{
+                  ticks: {
+                      beginAtZero:true,
+                      fontColor: "#CCC"
+                  },
+                  gridLines:{
+                    display : false
+                  }
+              }],
+
+              yAxes: [{
+                gridLines:{
+                  display : false
+                }
+                }],
+          },
+          responsive: true
+          ,
+          maintainAspectRatio: false,
+
+          layout: {
+          padding: {
+              left: -20,
+              right: 0,
+              top: 0,
+              bottom: 0
+          }
+        }
+      }
+  });
+
+}
