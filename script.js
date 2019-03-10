@@ -34,7 +34,7 @@ $( document ).ready(function() {
 	$('.showing-challenge').hide();
 	$('.challenge-toggler').fadeTo( "fast", .33 );
 
-
+	hideAllChallenges();
 
 });
 
@@ -201,3 +201,52 @@ $('.challenge-toggler').on(
 		document.getElementById("xp").style.borderBottom = "none";
   }
 );
+
+var pressTracker=0;
+
+function PlaySound(filename) {
+
+				if(pressTracker ==0){
+					var path = "/assets/";
+	        var snd = new Audio(path + filename + ".mp3");
+	        snd.play();
+
+					var change = document.getElementById("playMute");
+					change.classList.remove("fa-volume-off");
+					change.classList.add("fa-volume-up");
+
+					pressTracker=1;
+				}
+
+				else{
+					// var music = document.getElements("video1");
+					// music.muted = true;
+
+					var change2 = document.getElementById("playMute");
+					change2.classList.remove("fa-volume-up");
+					// change2.classList.addClass("fa-volume-off");
+
+					pressTracker=0;
+				}
+}
+
+var challengeSectionTracker=0;
+
+$(".challenge-advancer").click(function(){
+
+	if(challengeSectionTracker == 0){
+  	$("#challenge-empty").hide();
+		$("#challenge-players").show();
+	}
+
+	else if(challengeSectionTracker = 1){
+
+	}
+
+
+});
+
+
+function hideAllChallenges(){
+	$("#challenge-players").hide();
+}

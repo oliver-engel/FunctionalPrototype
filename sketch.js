@@ -22,6 +22,12 @@ var sendVal = 5;
 let cloud_1_x = 0;
 let dim =80.0;
 
+// var song;
+//
+// function preload() {
+//   song = loadSound('assets/medieval.mp3');
+// }
+
 function setup() {
 
 
@@ -66,6 +72,8 @@ let alpha = 0;
 
 //Main loop
 function draw() {
+
+
   // set background to black
   background(236, 96, 62);
   smooth(0);
@@ -88,6 +96,12 @@ function draw() {
   //If you have the arduino set up, change 'mouseX' to 'inData'.
   var angle = map(mouseX,0,255,0,300);
   sendVal = angle/30;
+
+  // if(angle > 0){
+  //   if ( !song.isPlaying() ) {
+  //   song.play();
+  // }
+  // }
 
   // console.log(int(sendVal));
 

@@ -40,7 +40,7 @@
           </div>
         </section>
 
-
+        <button class="soundButton" onclick="PlaySound('medieval')"> <i class="fas fa-volume-off" id="playMute"></i></button>
       </div>
 
 
@@ -66,6 +66,11 @@
 
               <div class="trial-list">
 
+                <div class="trial-empty-state">
+
+
+                </div>
+
               <!-- TRIALS GET APPENDED HERE -->
 
               </div>
@@ -74,12 +79,21 @@
 
 
             <div class="showing-challenge">
-              <div class="challenge">
+
+              <div class="challenge" id="challenge-empty">
                 <h1 class="challenge-header">Master the arts of potential and kinetic energy!</h1>
                 <h2 class="challenge-description">Compete against your teammates to reach the goals before time runs out.</h2>
-                <button class="challenge-start">Begin the challenges &nbsp;<i style="color:inherit" class="fas fa-arrow-right"></i></button>
-
+                <button class="challenge-advancer challenge-start">Begin the challenges &nbsp;<i style="color:inherit" class="fas fa-arrow-right"></i></button>
               </div>
+
+
+              <div id="challenge-players">
+                <h1 class="challenge-header">How many players are there?</h1>
+                <h2 class="challenge-description">Compete against your teammates to reach the goals before time runs out.</h2>
+                <button class="challenge-advancer challenge-next">Next</button>
+              </div>
+
+
             </div>
 
           </div>

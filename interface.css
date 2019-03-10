@@ -84,6 +84,7 @@ i{
 
 .weight-button{
   /* transform: translateY(-10px); */
+  transition: all 0.2s;
   color: var(--dark-red);
   opacity:.25;
   width:100px;
@@ -94,7 +95,7 @@ i{
   color:white;
   opacity:1;
   cursor: pointer;
-  transition: all 0.2s;
+
 }
 
 .main-interface{
@@ -103,6 +104,42 @@ i{
   /* padding:50px; */
   background: var(--red);
   overflow: hidden;
+}
+
+.soundButton{
+  transition: all 0.3s;
+  background: none;
+  border:none;
+  position:absolute;
+  left:50px;
+  bottom:50px;
+  font-size:16px;
+  opacity:.5;
+  color:var(--dark-red);
+  text-align: center;
+}
+
+.soundButton:focus{
+  outline: none;
+}
+
+i{
+   color:inherit;
+}
+
+.soundButton:hover{
+
+  cursor: pointer;
+  color:white;
+  opacity:1;
+}
+
+#playMute{
+  /* color:var(--dark-red); */
+  font-size:35px;
+  transform: translateY(8px);
+  /* transform: translateX(5px); */
+  padding-right:15px;
 }
 
 .weight-counter{
@@ -137,17 +174,34 @@ i{
 }
 
 .challenge-start{
+  transition: all 0.3s;
   border-radius: 500px;
   width:300px;
   height:50px;
   font-size:1.3em;
   background-color: var(--yellow);
-  border: none;
+  border:none;
+  /* border: 3px solid var(--yellow); */
   margin-top:50px;
   color:var(--dark-red);
 }
 
+.challenge-start:hover{
+  cursor: pointer;
+  opacity:.75;
+  /* color:var(--yellow); */
+  /* background-color: var(--dark-red); */
+}
 
+.challenge-next{
+  background-color:none;
+  font-size: 22px;
+  font-weight: 500;
+  color:var(--yellow);
+  background: none;
+  padding:0px;
+  border:none;
+}
 
 .sidebar{
 
