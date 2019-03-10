@@ -124,7 +124,11 @@ i{
 }
 
 .toggle-sidebar-content{
-  margin-top:100px;
+  margin-top:175px;
+}
+
+#trial-recorder{
+  transform: translateY(15px);
 }
 
 .sidebar{
@@ -169,7 +173,13 @@ i{
 
 .experiment{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 25px;
+
+  position:absolute;
+  top:130px;
+  background-color: var(--dark-red);
+  z-index:1000;
 }
 
 .potential-graph{
