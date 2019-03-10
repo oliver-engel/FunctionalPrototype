@@ -272,6 +272,7 @@ function changeColorsTheme1(){
 	document.documentElement.style.setProperty('--red', '#EC603E');
 	document.documentElement.style.setProperty('--dark-red', '#3C1911');
 	document.documentElement.style.setProperty('--darker-red', '#311009');
+	document.documentElement.style.setProperty('--yellow', '#ECD03E');
 
 }
 
@@ -280,6 +281,8 @@ function changeColorsTheme2(){
 	document.documentElement.style.setProperty('--red', '#2381ea');
 	document.documentElement.style.setProperty('--dark-red', '#014b8e');
 	document.documentElement.style.setProperty('--darker-red', '#012b54');
+	document.documentElement.style.setProperty('--yellow', '#FDCCF2');
+
 
 
 
