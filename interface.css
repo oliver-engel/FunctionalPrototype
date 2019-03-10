@@ -131,11 +131,13 @@ i{
 
   background: var(--dark-red);
   overflow: auto;
+  /* width:100%; */
 
 }
 
 .sidebar-inner{
   padding:50px;
+
 }
 
 .toggle-headers{
@@ -146,7 +148,8 @@ i{
   z-index: 1000;
   margin-top:-50px;
   padding-top:50px;
-  /* width:100%; */
+  width:inherit;
+  padding-right:1000px;
 }
 
 .toggle-headers:hover{
