@@ -250,3 +250,13 @@ $(".challenge-advancer").click(function(){
 function hideAllChallenges(){
 	$("#challenge-players").hide();
 }
+
+var numPlayers = 0;
+
+$('.grid-4 button').on('click', function(){
+    $('.grid-4 button.current-button').removeClass('current-button');
+    $(this).addClass('current-button');
+
+		numPlayers = $(this).closest(".current-button").attr("id");
+		console.log("num" + numPlayers);
+});

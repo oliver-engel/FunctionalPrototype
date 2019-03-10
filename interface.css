@@ -19,6 +19,7 @@
   --black : #1E1E1E;
   --red   : #EC603E;
   --dark-red : #3C1911;
+  --darker-red: #311009;
   --yellow: #ECD03E;
 }
 
@@ -193,7 +194,14 @@ i{
   /* background-color: var(--dark-red); */
 }
 
+.grid-4{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap:15px;
+}
+
 .challenge-next{
+  margin-top:50px;
   background-color:none;
   font-size: 22px;
   font-weight: 500;
@@ -202,6 +210,46 @@ i{
   padding:0px;
   border:none;
 }
+
+.player-selector{
+  /* transition: all 0.3s; */
+  /* width:24%; */
+  height:50px;
+  background: var(--darker-red);
+  font-size: 22px;
+  color:white;
+  border-radius: 300px;
+  border:2px solid var(--darker-red);
+}
+
+.player-selector:hover{
+  cursor:pointer;
+  background: var(--dark-red);
+  border:2px solid var(--red);
+}
+
+.player-selector:focus{
+  outline:none;
+}
+.current-button{
+  background: var(--red);
+  color: white;
+  border:2px solid var(--red);
+}
+
+.current-button:focus{
+  outline:none;
+}
+
+.current-button:hover{
+  /* background: rgba(255,255,255,1); */
+  background-color: var(--red);
+  color:white;
+}
+
+
+
+
 
 .sidebar{
 
