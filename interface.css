@@ -131,6 +131,23 @@ i{
   transform: translateY(15px);
 }
 
+.challenge-header{
+  font-size: 50px;
+}
+
+.challenge-start{
+  border-radius: 500px;
+  width:300px;
+  height:50px;
+  font-size:1.3em;
+  background-color: var(--yellow);
+  border: none;
+  margin-top:50px;
+  color:var(--dark-red);
+}
+
+
+
 .sidebar{
 
   background: var(--dark-red);
