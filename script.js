@@ -34,15 +34,6 @@ $( document ).ready(function() {
 	$('.showing-challenge').hide();
 	$('.challenge-toggler').fadeTo( "fast", .33 );
 
-	makeChart("chart-1");
-	// makeChart("chart-2");
-	// makeChart("chart-3");
-	// makeChart("chart-2", 6);
-	// makeChart("chart-3");
-	potentialEnergy(0);
-
-  appendChart();
-	//makeChart("chart-3");
 
 
 });
@@ -54,19 +45,20 @@ Adding charts to the list under experiments
 var trialValue = 0;
 
 function appendChart(){
-	$( ".trial-list" ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial bitch</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; <span id='weight-tracking'>5 Weights</span></section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart-3' width='400' height='200'></canvas></section></div></div>" );
+	//DOM material to inject into experiment section
+	$( ".trial-list" ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial bitch</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; <span id='weight-tracking'>5 Weights</span></section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart' width='400' height='200'></canvas></section></div></div>" );
 
-	// var chartID = document.getElementById("chart-x");
-	// chartID.innerHTML = "chart-3";
+	//Create the chart
+	makeChart("chart");
 
-	makeChart("chart-3");
-
-	//Change this later
+	//Counting up the number of trials
 	trialValue++;
 
+	//Setting the name of the trial
 	var trialNumName = document.getElementById("trial-number-name");
 	trialNumName.innerHTML = "Trial #" + trialValue;
 
+	//Setting the number of weights used
 	var numWeights = document.getElementById("weight-tracking");
 	numWeights.innerHTML =  globalWeight + " Weights";
 
@@ -145,7 +137,7 @@ function makeChart(id){
 var globalWeight=0;
 var curPotentialEnergy=0;
 
-
+//Increment number of weights
 function incrementValue()
 {
     var value = parseInt(document.getElementById('weight-changer').value, 10);
@@ -160,6 +152,7 @@ function incrementValue()
 		potentialEnergy(globalWeight * 9 * .5);
 }
 
+//Decrement number of weights
 function decrementValue()
 {
     var value = parseInt(document.getElementById('weight-changer').value, 10);
@@ -171,8 +164,9 @@ function decrementValue()
 
 		//Make update to the potential energy
 		//Plug in (m)(g)(h) here
-		potentialEnergy(globalWeight);
+		potentialEnergy(globalWeight * 9 * .5);
 }
+
 
 //Setting potential energy value
 function potentialEnergy(value){
