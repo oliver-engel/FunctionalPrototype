@@ -70,12 +70,17 @@ var ballX = 465;
 var ballY = -100;
 let alpha = 0;
 
+let bgColor = '#EC603E';
+
+
+
 //Main loop
 function draw() {
 
 
+
   // set background to black
-  background(236, 96, 62);
+  background(bgColor);
   smooth(0);
 
   push();
@@ -89,6 +94,7 @@ function draw() {
     scale(.35);
     translate(cloud_1_x, height / 2 - dim / 2);
     // rect(-dim / 2, -dim / 2, dim, dim);
+    blendMode(SCREEN);
     image(cloud_1, -600, 150);
   pop();
 
@@ -121,6 +127,7 @@ function draw() {
 
       //If the arm is less than 180 degrees, and hasn't been launched yet
       if(armSwing < 180 && projectile == true){
+
         image(ball,ballX,ballY);
       }
 
@@ -157,6 +164,7 @@ function draw() {
       }
 
       //Draw the arm
+
       image(arm, -143, -50);
       translate(-115,0);
 
@@ -165,6 +173,7 @@ function draw() {
 
       //Draw the weight
       imageMode(CENTER);
+
       image(weight,0,75);
 
       if(armSwing > 180){

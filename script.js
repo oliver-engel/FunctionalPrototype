@@ -204,6 +204,7 @@ $('.challenge-toggler').on(
 
 var pressTracker=0;
 
+//Playing music. Need to fix the icon issue
 function PlaySound(filename) {
 
 				if(pressTracker ==0){
@@ -232,6 +233,7 @@ function PlaySound(filename) {
 
 var challengeSectionTracker=0;
 
+//The progression of screens for the challenge sidebar
 $(".challenge-advancer").click(function(){
 
 	if(challengeSectionTracker == 0){
@@ -242,21 +244,45 @@ $(".challenge-advancer").click(function(){
 	else if(challengeSectionTracker = 1){
 
 	}
-
-
 });
 
-
+//Make sure all the challenge screens are hidden on start.
+//These get revealed as the kids navigate through the challenge sidebar.
+//Make sure to add in the IDs of all new sections that are added.
 function hideAllChallenges(){
 	$("#challenge-players").hide();
 }
 
+//Stores the number of selected players
 var numPlayers = 0;
 
+
+//Functionality for the player selection buttons
 $('.grid-4 button').on('click', function(){
     $('.grid-4 button.current-button').removeClass('current-button');
     $(this).addClass('current-button');
 
+		//Update the number of players
 		numPlayers = $(this).closest(".current-button").attr("id");
-		console.log("num" + numPlayers);
 });
+
+
+function changeColorsTheme1(){
+	bgColor='#EC603E';
+	document.documentElement.style.setProperty('--red', '#EC603E');
+	document.documentElement.style.setProperty('--dark-red', '#3C1911');
+	document.documentElement.style.setProperty('--darker-red', '#311009');
+
+}
+
+function changeColorsTheme2(){
+	bgColor='#2381ea';
+	document.documentElement.style.setProperty('--red', '#2381ea');
+	document.documentElement.style.setProperty('--dark-red', '#014b8e');
+	document.documentElement.style.setProperty('--darker-red', '#012b54');
+
+
+
+
+
+}

@@ -48,8 +48,8 @@
         <div class="sidebar-inner">
 
           <div class="toggle-headers">
-            <h1 class="experiment-toggler" id="xp">Experiment</h1>
-            <h1 class="challenge-toggler" id="ch">Challenges</h1>
+            <h1 onclick="changeColorsTheme1()" class="experiment-toggler" id="xp">Experiment</h1>
+            <h1 onclick="changeColorsTheme2()" class="challenge-toggler" id="ch">Challenges</h1>
           </div>
 
           <div class="toggle-sidebar-content">
@@ -99,22 +99,14 @@
 
 
                 <button class="challenge-advancer challenge-next">Next</button>
+
               </div>
-
-
             </div>
-
           </div>
-
         </div>
       </div>
+    </div>
 
-
-  </div>
-
-
-
-    <!-- <script src="sketch-javan.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -123,52 +115,6 @@
 
     <script src="sketch.js"></script>
     <script src="script.js"></script>
-
-
-    <script>
-    // var ctx = document.getElementById("myChart").getContext('2d');
-    // var myChart = new Chart(ctx, {
-    //     type: 'horizontalBar',
-    //     data: {
-    //         labels: ["", ""],
-    //         datasets: [{
-    //             label: 'Joules of energy',
-    //             data: [19, 13],
-    //             backgroundColor: [
-    //                 'rgb(236, 96, 62)',
-    //                 'rgb(236, 208, 63)'
-    //
-    //             ],
-    //
-    //             borderWidth: 0
-    //         }]
-    //     },
-    //     options: {
-    //       legend:{
-    //         display:false
-    //       },
-    //         scales: {
-    //             xAxes: [{
-    //                 ticks: {
-    //                     beginAtZero:true
-    //                 }
-    //             }]
-    //         },
-    //         responsive: true
-    //         ,
-    //         maintainAspectRatio: false,
-    //
-    //         layout: {
-    //         padding: {
-    //             left: -20,
-    //             right: 0,
-    //             top: 0,
-    //             bottom: 0
-    //         }
-    //     }
-    //     }
-    // });
-    </script>
 
   </body>
 </html>
