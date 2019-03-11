@@ -165,6 +165,7 @@ function draw() {
         appendChart();
 
         // showLegend();
+        
 
         chartAppended = true;
         //Do stuff when the arm hits 180 degrees
