@@ -246,6 +246,12 @@ $(".challenge-advancer").click(function(){
 	}
 });
 
+$(".challenge-decreaser").click(function(){
+	challengeSectionTracker--;
+});
+
+
+
 //Make sure all the challenge screens are hidden on start.
 //These get revealed as the kids navigate through the challenge sidebar.
 //Make sure to add in the IDs of all new sections that are added.

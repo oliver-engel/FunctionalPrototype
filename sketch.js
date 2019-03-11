@@ -12,7 +12,7 @@ var minWidth = 600;   //set min width and height for canvas
 var minHeight = 400;
 var width, height;    // actual width and height for the sketch
 
-let angle = 0;
+
 let transparency = 255;
 var projectile = true;
 var launchSound;
@@ -22,11 +22,9 @@ var sendVal = 5;
 let cloud_1_x = 0;
 let dim =80.0;
 
-// var song;
-//
-// function preload() {
-//   song = loadSound('assets/medieval.mp3');
-// }
+var smoothedSensor = 0;
+
+
 
 function setup() {
 
@@ -35,7 +33,6 @@ function setup() {
   height=800;
 
   //set up canvas
-  // createCanvas(windowWidth, windowHeight);
   var widthParent = document.getElementById('trebuchet-animation-holder').offsetWidth;
   var heightParent = document.getElementById('trebuchet-animation-holder').offsetHeight;
 
@@ -46,9 +43,9 @@ function setup() {
   noStroke();
 
   //images
-  support = loadImage('assets/support-red.png');
-  arm = loadImage('assets/arm-red.png');
-  weight = loadImage('assets/weight-red.png');
+  support = loadImage('assets/support-transp.png');
+  arm = loadImage('assets/arm.png');
+  weight = loadImage('assets/weight-transp.png');
   ready = loadImage('assets/ready.png');
   ball = loadImage('assets/ball.png');
   cloud_1 = loadImage('assets/cloud-1.png');
@@ -72,12 +69,14 @@ let alpha = 0;
 
 let bgColor = '#EC603E';
 
-
+let angle=0;
+let oldAngle = 0;
+let newAngle = 0;
 
 //Main loop
 function draw() {
 
-
+  // console.log(map(inData, 0, 1023, 45, 200));
 
   // set background to black
   background(bgColor);
@@ -98,29 +97,26 @@ function draw() {
     image(cloud_1, -600, 150);
   pop();
 
-  //Get the angle; for Arduino-less testing, keep as mouseX.
-  //If you have the arduino set up, change 'mouseX' to 'inData'.
-  var angle = map(mouseX,0,255,0,300);
-  sendVal = angle/30;
 
-  // if(angle > 0){
-  //   if ( !song.isPlaying() ) {
-  //   song.play();
-  // }
-  // }
-
-  // console.log(int(sendVal));
+  // Get the angle; for Arduino-less testing, change inData to mouseX.
+  // If you have the arduino set up, change mouseX to inData'.
+  // Change the last variable to alibrate the resting position of the arm.
+  var angle = map(inData, 29, 40, 45, 190);
+  // print(angle);
 
   //Scale and translate the whole thing
   scale(.4);
-  translate(610,300);
+  translate(610,375);
 
   push();
       //Set the position
       translate(575,285);
 
       //Keep the arm between 45 and 270 degrees
+
       var armSwing = constrain(angle, 45, 270);
+      console.log(armSwing);
+      // console.log(angle);
 
       // var weightx = constrain(mx, 0,140);
       rotate(-armSwing + 90);
@@ -230,7 +226,17 @@ function portOpen() {
 }
 
 function serialEvent() {
-  inData = Number(serial.read());
+  // inData = Number(serial.read());
+  // print(inData);
+
+  // read a string from the serial port:
+  var inString = serial.readLine();
+  // check to see that there's actually a string there:
+  if (inString.length > 0 ) {
+    // convert it to a number:
+    inData = Number(inString);
+    // print(inData);
+  }
 }
 
 function serialError(err) {

@@ -211,6 +211,18 @@ i{
   border:none;
 }
 
+.challenge-back{
+  margin-top:50px;
+  margin-right:25px;
+  background-color:none;
+  font-size: 22px;
+  font-weight: 500;
+  color:var(--yellow);
+  background: none;
+  padding:0px;
+  border:none;
+}
+
 .player-selector{
   /* transition: all 0.3s; */
   /* width:24%; */
