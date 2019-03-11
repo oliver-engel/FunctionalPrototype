@@ -160,9 +160,11 @@ function draw() {
 
 
 
-      if(armSwing > 180 && projectile == false && chartAppended == false){
+      if(armSwing > 190 && projectile == false && chartAppended == false){
         console.log("Ay waddup!!!!!");
         appendChart();
+
+        // showLegend();
 
         chartAppended = true;
         //Do stuff when the arm hits 180 degrees

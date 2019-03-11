@@ -39,12 +39,16 @@ $( document ).ready(function() {
 });
 
 /*--------------------------------------------------
-Triggering appendChart() on projectile launch
+Showing legend on first launch
 ---------------------------------------------------*/
+var isLegendShowing = false;
 
+function showLegend(){
 
+	$('#experiment-legend').show();
+	isLegendShowing = true;
 
-
+}
 
 /*--------------------------------------------------
 Adding charts to the list under experiments

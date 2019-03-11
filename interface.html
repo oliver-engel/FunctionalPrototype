@@ -45,6 +45,7 @@
 
 
       <div class="sidebar">
+
         <div class="sidebar-inner">
 
           <div class="toggle-headers">
@@ -56,18 +57,21 @@
 
             <div class="showing-experiment">
 
-              <div class="experiment">
+              <div class="experiment" id="experiment-legend">
                 <h3><i id="pot-energy-color" class="fas fa-square"></i> Potential energy</h3>
                 <h3><i id="kin-energy-color" class="fas fa-square"></i> Kinetic energy</h3>
 
                 <!-- For now, this button records trial data. -->
-                <button id="trial-recorder" onclick="appendChart()" style="height:30px; border-radius:3px">Record value (temp button)</button>
+                <!-- <button id="trial-recorder" onclick="appendChart()" style="height:30px; border-radius:3px">Record value (temp button)</button> -->
               </div>
 
               <div class="trial-list">
 
                 <div class="trial-empty-state">
 
+                  <!-- <h1 class="challenge-header">Welcome to the<br>trebuchet trials!</h1>
+                  <h2 class="challenge-description">Select your weights, pull back the arm, and let it fly to start recording your data.</h2> -->
+                  <!-- <button class="challenge-advancer challenge-start">Begin the challenges &nbsp;<i style="color:inherit" class="fas fa-arrow-right"></i></button> -->
 
                 </div>
 
@@ -98,7 +102,7 @@
                 </section>
 
                 <!-- <button class="challenge-decreaser challenge-back">Back</button> -->
-                <button class="challenge-advancer challenge-start">Play <i class="fas fa-flag-checkered"></i></button>
+                <button class="challenge-advancer challenge-start">Play</button>
 
               </div>
             </div>

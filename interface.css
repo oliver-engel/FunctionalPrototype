@@ -71,6 +71,10 @@ i{
   height:100vh;
 }
 
+/* #experiment-legend{
+  display: none;
+} */
+
 #trebuchet-animation-holder{
   width:100%;
   height:400px;
