@@ -39,6 +39,14 @@ $( document ).ready(function() {
 });
 
 /*--------------------------------------------------
+Triggering appendChart() on projectile launch
+---------------------------------------------------*/
+
+
+
+
+
+/*--------------------------------------------------
 Adding charts to the list under experiments
 ---------------------------------------------------*/
 
@@ -62,14 +70,7 @@ function appendChart(){
 	var numWeights = document.getElementById("weight-tracking");
 	numWeights.innerHTML =  globalWeight + " Weights";
 
-	// var chartID = document.getElementById("chart-x");
-	// chartID.innerHTML = "chart-" + trialValue;
 
-	// var potentialEValue = document.getElementById("trial-number-name")
-	// potentialEValue.innerHTML = curPotentialEnergy;
-
-	// var trialNum = document.getElementById("trial-x");
-	// trialNum.id = "trial-3";
 }
 
 
@@ -130,9 +131,6 @@ function makeChart(id){
       }
   });
 }
-
-
-
 
 var globalWeight=0;
 var curPotentialEnergy=0;

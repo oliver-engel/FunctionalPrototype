@@ -8,29 +8,13 @@ var serial;   // variable to hold an instance of the serialport library
 var portName = '/dev/cu.usbmodem144401';    // fill in your serial port name here
 var inData;   // variable to hold the input data from Arduino
 
-var minWidth = 600;   //set min width and height for canvas
-var minHeight = 400;
-var width, height;    // actual width and height for the sketch
-
-
 let transparency = 255;
 var projectile = true;
-var launchSound;
-
-var sendVal = 5;
 
 let cloud_1_x = 0;
-let dim =80.0;
-
-var smoothedSensor = 0;
-
-
+let dim = 80.0;
 
 function setup() {
-
-
-  width=1200;
-  height=800;
 
   //set up canvas
   var widthParent = document.getElementById('trebuchet-animation-holder').offsetWidth;
@@ -73,38 +57,40 @@ let angle=0;
 let oldAngle = 0;
 let newAngle = 0;
 
+var chartAppended = false;
+
 //Main loop
 function draw() {
 
-  // console.log(map(inData, 0, 1023, 45, 200));
-
-  // set background to black
+  // Set background color
   background(bgColor);
   smooth(0);
 
+  // Make the drifting cloud
   push();
+    // Change the + ___ value to shift speed
     cloud_1_x = cloud_1_x + 0.8;
-
-    // console.log("cloud_1_x" + cloud_1_x);
-
+    // Resetting the cloud
     if (cloud_1_x > 3500) {
       cloud_1_x = -600;
     }
     scale(.35);
     translate(cloud_1_x, height / 2 - dim / 2);
-    // rect(-dim / 2, -dim / 2, dim, dim);
     blendMode(SCREEN);
     image(cloud_1, -600, 150);
   pop();
-
 
   // Get the angle; for Arduino-less testing, change inData to mouseX.
   // If you have the arduino set up, change mouseX to inData'.
   // Change the last variable to alibrate the resting position of the arm.
   var angle = map(inData, 29, 40, 45, 190);
-  // print(angle);
 
-  //Scale and translate the whole thing
+  // if(angle < 60){
+  // 	print("Ay waddup");
+  // }
+
+  // Scale and translate the whole thing
+  // Use this to position the trebuchet
   scale(.4);
   translate(610,375);
 
@@ -113,9 +99,8 @@ function draw() {
       translate(575,285);
 
       //Keep the arm between 45 and 270 degrees
-
       var armSwing = constrain(angle, 45, 270);
-      console.log(armSwing);
+      // console.log(armSwing);
       // console.log(angle);
 
       // var weightx = constrain(mx, 0,140);
@@ -123,7 +108,6 @@ function draw() {
 
       //If the arm is less than 180 degrees, and hasn't been launched yet
       if(armSwing < 180 && projectile == true){
-
         image(ball,ballX,ballY);
       }
 
@@ -157,6 +141,8 @@ function draw() {
         ballX = 465;
         ballyY = -100;
         image(ball,ballX,ballY);
+
+        chartAppended = false;
       }
 
       //Draw the arm
@@ -172,9 +158,17 @@ function draw() {
 
       image(weight,0,75);
 
-      if(armSwing > 180){
+
+
+      if(armSwing > 180 && projectile == false && chartAppended == false){
+        console.log("Ay waddup!!!!!");
+        appendChart();
+
+        chartAppended = true;
         //Do stuff when the arm hits 180 degrees
       }
+
+      // else if()
 
   pop();
 
