@@ -14,6 +14,8 @@ var projectile = true;
 let cloud_1_x = 0;
 let dim = 80.0;
 
+var sunMoon = "sun";
+
 function setup() {
 
   //set up canvas
@@ -33,6 +35,8 @@ function setup() {
   ready = loadImage('assets/ready.png');
   ball = loadImage('assets/ball.png');
   cloud_1 = loadImage('assets/cloud-1.png');
+  sun = loadImage('assets/sun.png');
+  moon = loadImage('assets/moon.png');
 
   //Set up communication port
   serial = new p5.SerialPort();       // make a new instance of the serialport library
@@ -66,6 +70,19 @@ function draw() {
   background(bgColor);
   smooth(0);
 
+  // THE SUN
+  push();
+  scale(.35);
+    imageMode(CENTER);
+    if(bgColor == '#EC603E'){
+      image(sun,700,300);
+    }
+    else{
+      image(moon,700,300);
+    }
+  pop();
+
+
   // Make the drifting cloud
   push();
     // Change the + ___ value to shift speed
@@ -79,6 +96,7 @@ function draw() {
     blendMode(SCREEN);
     image(cloud_1, -600, 150);
   pop();
+
 
   // Get the angle; for Arduino-less testing, change inData to mouseX.
   // If you have the arduino set up, change mouseX to inData'.
@@ -165,7 +183,7 @@ function draw() {
         appendChart();
 
         // showLegend();
-        
+
 
         chartAppended = true;
         //Do stuff when the arm hits 180 degrees
