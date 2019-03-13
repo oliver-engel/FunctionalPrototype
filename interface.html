@@ -1,7 +1,9 @@
 <!-- the html wrapper for p5.js sketch -->
 <!-- the main sketch is written is sketch.js  -->
 
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html>
+
+<head>
     <title>Trebuchet Trials</title>
     <script src="p5.min.js"></script>
     <script src="p5.dom.min.js"></script>
@@ -11,24 +13,23 @@
     <link rel="stylesheet" href="https://use.typekit.net/fsv2put.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <meta charset="utf-8">
-
   </head>
   <body>
 
   <div class="interface-container">
 
-      <div class="main-interface">
+      <div class="main-interface has-animation">
         <section id="trebuchet-animation-holder">
           <!-- <h1>P5 JS Sketch here</h1> -->
         </section>
 
-        <section class="weight-counter">
+        <section class="weight-counter has-animation" data-delay="200">
 
           <h1 style="margin-bottom:0px;"><i onclick="decrementValue()" class="weight-button fas fa-minus"></i><span id="weight-changer">0</span><i onclick="incrementValue()" class="weight-button fas fa-plus"></i></h1>
           <h1 class="value-label">How many weights?</h1>
         </section>
 
-        <section class="energy-outputs">
+        <section class="energy-outputs has-animation" data-delay="400">
           <div>
             <h1 class="value-large" id="potential-energy-value">0 J</h1>
             <h1 class="value-label">Potential Energy</h1>
@@ -46,7 +47,7 @@
 
       <div class="sidebar">
 
-        <div class="sidebar-inner">
+        <div class="sidebar-inner has-animation" data-delay="800">
 
           <div class="toggle-headers">
             <h1 onclick="changeColorsTheme1()" class="experiment-toggler" id="xp">Experiment</h1>

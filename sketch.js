@@ -152,7 +152,7 @@ function draw() {
         pop();
       }
 
-      //BALL RESET
+      // Resetting the ball
       else if(armSwing < 46){
         projectile = true;
         ballX = 465;
@@ -161,29 +161,21 @@ function draw() {
         chartAppended = false;
       }
 
-      //Draw the arm
-
+      // Draw the arm
       image(arm, -143, -50);
       translate(-115,0);
 
-      //Rotating the arm based on sensor input
+      // Rotating the arm based on sensor input
       rotate(armSwing-90);
 
-      //Draw the weight
+      // Draw the weight
       imageMode(CENTER);
-
       image(weight,0,75);
-
 
       // Do stuff when the arm hits 190 degrees
       if(armSwing > 190 && projectile == false && chartAppended == false){
-        console.log("Ay waddup!!!!!");
-        appendChart();
-
-
-        // showLegend();
-
-        chartAppended = true;
+        appendChart(); // add a new chart
+        chartAppended = true; // turn off chart adding until reset
       }
   pop();
 
@@ -229,9 +221,8 @@ function portOpen() {
   print('the serial port opened.')
 }
 
+// Where the Arduino data comes in
 function serialEvent() {
-  // inData = Number(serial.read());
-  // print(inData);
 
   // read a string from the serial port:
   var inString = serial.readLine();

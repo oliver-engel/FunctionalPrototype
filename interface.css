@@ -32,6 +32,7 @@ body{
 
   -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
+
 }
 
 h1{
@@ -78,6 +79,8 @@ i{
   grid-template-columns: 3fr 2fr;
 
   height:100vh;
+
+  background-color: var(--red);
 }
 
 #challenge-countdown{
@@ -90,9 +93,6 @@ i{
   color:white;
 }
 
-/* #experiment-legend{
-  display: none;
-} */
 
 #trebuchet-animation-holder{
   width:100%;
@@ -388,4 +388,22 @@ i{
   font-size: 22px;
   color:white;
   font-weight : 500;
+}
+
+/* ANIMATE IN */
+
+.has-animation {
+  opacity            : 0!important;
+  transform          : translateY(60px);
+  -webkit-transition : transform .8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s,
+                       opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s;
+  -webkit-transition : translateY(60px);
+  transition         : transform .8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s,
+                       opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s;
+}
+
+.has-animation.animate-in {
+  opacity            : 1!important;
+  transform          : translateY(0px);
+  -webkit-transition : translateY(0px);
 }
