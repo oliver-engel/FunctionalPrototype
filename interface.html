@@ -35,7 +35,7 @@
           </div>
 
           <div>
-            <h1 class="value-large">0 J</h1>
+            <h1 class="value-large" id="kinetic-energy-value">0 J</h1>
             <h1 class="value-label">Kinetic Energy</h1>
           </div>
         </section>
@@ -103,8 +103,22 @@
 
                 <!-- <button class="challenge-decreaser challenge-back">Back</button> -->
                 <button class="challenge-advancer challenge-start">Play</button>
-
               </div>
+
+
+              <div id="challenge-countdown">
+                <div id="countdown">10</div>
+              </div>
+
+              <div class="challenge-holder">
+                <h2>Player 1</h2>
+                <h1 class="challenge-header">Launch a projectile with kinetic energy between:</h1>
+                <h1 class="challenge-header" id="kinetic-goal">25 – 30 J</h1>
+              </div>
+
+
+
+
             </div>
           </div>
         </div>
@@ -119,6 +133,8 @@
 
     <script src="sketch.js"></script>
     <script src="script.js"></script>
+    <script src="countdown.js"></script>
+    <script src="KE.js"></script>
 
   </body>
 </html>

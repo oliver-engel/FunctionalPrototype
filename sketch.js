@@ -1,4 +1,11 @@
 /*
+* P5.JS TREBUCHET
+* BY OLIVER ENGEL
+* oliverengel.com
+*/
+
+
+/*
 P5.js setup code was sourced from these links:
 https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-serial-input-to-the-p5-js-ide/
 https://itp.nyu.edu/physcomp/labs/labs-serial-communication/lab-serial-input-to-the-p5-js-ide/
@@ -8,13 +15,13 @@ var serial;   // variable to hold an instance of the serialport library
 var portName = '/dev/cu.usbmodem144401';    // fill in your serial port name here
 var inData;   // variable to hold the input data from Arduino
 
-let transparency = 255;
 var projectile = true;
+var sunMoon = "sun";
+var constrained;
 
+let transparency = 255;
 let cloud_1_x = 0;
 let dim = 80.0;
-
-var sunMoon = "sun";
 
 function setup() {
 
@@ -50,20 +57,20 @@ function setup() {
   serial.open(portName);              // open a serial port
 }
 
-//Ball positions
+// Ball positions
 var ballX = 465;
 var ballY = -100;
 let alpha = 0;
 
+// Background color of the sketch, will change based on mode
 let bgColor = '#EC603E';
 
 let angle=0;
-let oldAngle = 0;
-let newAngle = 0;
 
+// This var appends a new chart when the projectile is launched.
 var chartAppended = false;
 
-//Main loop
+// Main loop
 function draw() {
 
   // Set background color
@@ -82,7 +89,6 @@ function draw() {
     }
   pop();
 
-
   // Make the drifting cloud
   push();
     // Change the + ___ value to shift speed
@@ -100,12 +106,13 @@ function draw() {
 
   // Get the angle; for Arduino-less testing, change inData to mouseX.
   // If you have the arduino set up, change mouseX to inData'.
-  // Change the last variable to alibrate the resting position of the arm.
-  var angle = map(inData, 29, 40, 45, 190);
+  // Change the last variable to calibrate the resting position of the arm.
+  var angle = map(inData, 29, 40, 45, 180);
 
-  // if(angle < 60){
-  // 	print("Ay waddup");
-  // }
+  var controlPotentialEnergy = map(angle, 45, 180, .1, 1);
+  constrained = constrain(controlPotentialEnergy, 0, 1);
+
+  console.log(constrained);
 
   // Scale and translate the whole thing
   // Use this to position the trebuchet
@@ -113,31 +120,28 @@ function draw() {
   translate(610,375);
 
   push();
-      //Set the position
+      // Set the position
       translate(575,285);
 
-      //Keep the arm between 45 and 270 degrees
+      // Keep the arm between 45 and 270 degrees
       var armSwing = constrain(angle, 45, 270);
-      // console.log(armSwing);
-      // console.log(angle);
 
-      // var weightx = constrain(mx, 0,140);
+      // Rotating the arm
       rotate(-armSwing + 90);
 
-      //If the arm is less than 180 degrees, and hasn't been launched yet
+      // If the arm is less than 180 degrees, and hasn't been launched yet...
       if(armSwing < 180 && projectile == true){
         image(ball,ballX,ballY);
       }
 
-      //If the arm passes 180
+      // If the arm passes 180
       else if(armSwing > 180){
-        //Sound
 
-        //Can't fire again until reloaded
+        // Can't fire again until reloaded
         projectile = false;
-        //Add a motion trail
+        // Add a motion trail
         background(34, 36, 43, 1);
-        //Rate of firing
+        // Rate of firing
         ballX += 25;
 
         //Animate the ball
@@ -146,11 +150,6 @@ function draw() {
           imageMode(CENTER);
           image(ball,ballX,ballY);
         pop();
-
-        //DEBUGGING
-        // fill(255);
-        // text(ballX + ", " + ballY, ballX, ballY);
-
       }
 
       //BALL RESET
@@ -159,7 +158,6 @@ function draw() {
         ballX = 465;
         ballyY = -100;
         image(ball,ballX,ballY);
-
         chartAppended = false;
       }
 
@@ -177,24 +175,17 @@ function draw() {
       image(weight,0,75);
 
 
-
+      // Do stuff when the arm hits 190 degrees
       if(armSwing > 190 && projectile == false && chartAppended == false){
         console.log("Ay waddup!!!!!");
         appendChart();
 
+
         // showLegend();
 
-
         chartAppended = true;
-        //Do stuff when the arm hits 180 degrees
       }
-
-      // else if()
-
   pop();
-
-
-
 
   //Draw the support
   image(support, 212, 225);
@@ -217,8 +208,6 @@ function draw() {
     pop();
   }
 }
-
-
 
 
 // DONT TOUCH THIS
@@ -251,6 +240,9 @@ function serialEvent() {
     // convert it to a number:
     inData = Number(inString);
     // print(inData);
+
+    // This calculates the kinetic energy readings.
+    energyListen();
   }
 }
 

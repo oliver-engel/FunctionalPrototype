@@ -46,6 +46,15 @@ h1, h2, h3, h4, h5, h6 {
   color:white;
 }
 
+p{
+  font-family : 'Calibre',
+                sans-serif;
+  font-style  : normal;
+  font-weight : 400;
+  color:white;
+  /* font-size:22px; */
+}
+
 i{
   color:white;
   font-size: .8em;
@@ -69,6 +78,16 @@ i{
   grid-template-columns: 3fr 2fr;
 
   height:100vh;
+}
+
+#challenge-countdown{
+  text-align: center;
+  font-size: 128px;
+  font-family : 'Calibre',
+                sans-serif;
+  font-style  : normal;
+  font-weight : 400;
+  color:white;
 }
 
 /* #experiment-legend{
