@@ -2,16 +2,16 @@
   font-family : 'Calibre';
   font-style  : normal;
   font-weight : 600;
-  src         : url('fonts/Calibre-Semibold.woff2') format('woff2'),
-                url('fonts/Calibre-Semibold.woff') format('woff');
+  src         : url('../fonts/Calibre-Semibold.woff2') format('woff2'),
+                url('../fonts/Calibre-Semibold.woff') format('woff');
 }
 
 @font-face {
   font-family : 'Calibre';
   font-style  : normal;
   font-weight : normal;
-  src         : url('fonts/Calibre-Regular.woff2') format('woff2'),
-                url('fonts/Calibre-Regular.woff') format('woff');
+  src         : url('../fonts/Calibre-Regular.woff2') format('woff2'),
+                url('../fonts/Calibre-Regular.woff') format('woff');
 }
 
 :root {

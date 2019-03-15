@@ -78,7 +78,7 @@ function makeChart(id){
               xAxes: [{
                   ticks: {
 											//Set max value on horizontal scale here
-											max:50,
+											max:250,
                       beginAtZero:true,
                       fontColor: "#CCC"
                   },
@@ -195,7 +195,7 @@ var pressTracker=0;
 function PlaySound(filename) {
 
 				if(pressTracker == 0){
-					var path = "/assets/";
+					var path = "/assets/interface/";
 	        var snd = new Audio(path + filename + ".mp3");
 	        snd.play();
 
@@ -253,7 +253,6 @@ function hideAllChallenges(){
 
 //Stores the number of selected players
 var numPlayers = 0;
-
 
 //Functionality for the player selection buttons
 $('.grid-4 button').on('click', function(){

@@ -31,19 +31,18 @@ function setup() {
 
   var canvas = createCanvas(widthParent, 450);
   canvas.parent('trebuchet-animation-holder');
-  console.log(heightParent);
   angleMode(DEGREES);
   noStroke();
 
   //images
-  support = loadImage('assets/support-transp.png');
-  arm = loadImage('assets/arm.png');
-  weight = loadImage('assets/weight-transp.png');
-  ready = loadImage('assets/ready.png');
-  ball = loadImage('assets/ball.png');
-  cloud_1 = loadImage('assets/cloud-1.png');
-  sun = loadImage('assets/sun.png');
-  moon = loadImage('assets/moon.png');
+  support = loadImage('assets/interface/support.png');
+  arm = loadImage('assets/interface/arm.png');
+  weight = loadImage('assets/interface/weight.png');
+  ready = loadImage('assets/interface/ready.png');
+  ball = loadImage('assets/interface/ball.png');
+  cloud_1 = loadImage('assets/interface/cloud-1.png');
+  sun = loadImage('assets/interface/sun.png');
+  moon = loadImage('assets/interface/moon.png');
 
   //Set up communication port
   serial = new p5.SerialPort();       // make a new instance of the serialport library
@@ -210,7 +209,7 @@ function printList(portList) {
  // portList is an array of serial port names
  for (var i = 0; i < portList.length; i++) {
  // Display the list the console:
- print(i + " " + portList[i]);
+ // print(i + " " + portList[i]);
  }
 }
 
