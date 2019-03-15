@@ -85,6 +85,7 @@ function draw() {
       image(sun,700,300);
     }
     else{
+      blendMode(SCREEN);
       image(moon,700,300);
     }
   pop();
@@ -112,7 +113,7 @@ function draw() {
   var controlPotentialEnergy = map(angle, 45, 180, .1, 1);
   constrained = constrain(controlPotentialEnergy, 0, 1);
 
-  console.log(constrained);
+  // console.log(constrained);
 
   // Scale and translate the whole thing
   // Use this to position the trebuchet

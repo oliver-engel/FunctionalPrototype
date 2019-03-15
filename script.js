@@ -70,6 +70,7 @@ function makeChart(id){
       },
       options: {
         scaleShowVerticalLines: false,
+        scaleLineColor: "#fff",
         legend:{
           display:false
         },
@@ -82,7 +83,9 @@ function makeChart(id){
                       fontColor: "#CCC"
                   },
                   gridLines:{
-                    display : false
+                    display : false,
+                    color: "#fff",
+
                   }
               }],
               yAxes: [{
@@ -105,30 +108,42 @@ function makeChart(id){
   });
 }
 
-var globalWeight=0;
+
+var globalWeight=1; // keep track of weights inputted
+var projectileWeight = 0;
+var weightFactor = .25; // change as needed
 var curPotentialEnergy=0;
-var potentialEnergyHeight = 3;
+var potentialEnergyHeight = 12; // change as needed
 var gravitationalConstant = 10;
 
-//Increment number of weights
+// Setting potential energy value
+function potentialEnergy(value){
+	document.getElementById("potential-energy-value").innerHTML = value + " J";
+	curPotentialEnergy = value;
+}
+
+// Increment number of weights
 function incrementValue()
 {
-    var value = parseInt(document.getElementById('weight-changer').value, 10);
-    value = isNaN(value) ? 0 : value;
-    value++;
-    document.getElementById('weight-changer').value = value;
-		document.getElementById('weight-changer').innerHTML = value;
-		globalWeight=value;
+    if(globalWeight >= 0){ // only increment if > 0
+      var value = parseInt(document.getElementById('weight-changer').value, 10);
+      value = isNaN(value) ? 0 : value;
+      value++;
+      document.getElementById('weight-changer').value = value;
+  		document.getElementById('weight-changer').innerHTML = value;
+  		globalWeight=value;
+      projectileWeight = weightFactor * globalWeight;
 
-		//Make update to the potential energy
-		//Plug in (m)(g)(h) here
-		potentialEnergy(globalWeight * gravitationalConstant * potentialEnergyHeight);
-
+  		// Make update to the potential energy
+  		// Plug in (m)(g)(h) here
+  		potentialEnergy(globalWeight * gravitationalConstant * potentialEnergyHeight);
+    }
 }
 
 // Decrement number of weights
 function decrementValue()
 {
+  if(globalWeight >= 1){ //only decrement if > 0
     var value = parseInt(document.getElementById('weight-changer').value, 10);
     value = isNaN(value) ? 0 : value;
     value--;
@@ -139,21 +154,12 @@ function decrementValue()
 		// Make update to the potential energy
 		// Plug in (m)(g)(h) here
 		potentialEnergy(globalWeight * gravitationalConstant * potentialEnergyHeight);
+  }
 }
 
 
-// Setting potential energy value
-function potentialEnergy(value){
-	document.getElementById("potential-energy-value").innerHTML = value + " J";
-	curPotentialEnergy = value;
-}
 
-// Setting kinetic energy value
-// function kineticEnergy(value){
-//
-// 	document.getElementById("kinetic-energy-value").innerHTML = value + " J";
-//
-// }
+
 
 //Toggling the experiment section
 $('.experiment-toggler').on(
@@ -188,7 +194,7 @@ var pressTracker=0;
 //Playing music. Need to fix the icon issue
 function PlaySound(filename) {
 
-				if(pressTracker ==0){
+				if(pressTracker == 0){
 					var path = "/assets/";
 	        var snd = new Audio(path + filename + ".mp3");
 	        snd.play();
@@ -236,14 +242,13 @@ $(".challenge-decreaser").click(function(){
 });
 
 
-
 //Make sure all the challenge screens are hidden on start.
 //These get revealed as the kids navigate through the challenge sidebar.
 //Make sure to add in the IDs of all new sections that are added.
 function hideAllChallenges(){
 	$("#challenge-players").hide();
 	$("#challenge-countdown").hide();
-	$(".challenge-holder").hide();
+	$("#challenge-holder-1").hide();
 }
 
 //Stores the number of selected players
@@ -259,6 +264,10 @@ $('.grid-4 button').on('click', function(){
 		numPlayers = $(this).closest(".current-button").attr("id");
 });
 
+
+/*--------------------------------------------------
+Changing the colors on tab switch
+---------------------------------------------------*/
 
 function changeColorsTheme1(){
 	bgColor='#EC603E';

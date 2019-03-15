@@ -63,12 +63,21 @@
                 <h3><i id="kin-energy-color" class="fas fa-square"></i> Kinetic energy</h3>
 
                 <!-- For now, this button records trial data. -->
+                <button class="reset-button" value="Refresh Page" onClick="window.location.reload()">Reset values</button>
                 <!-- <button id="trial-recorder" onclick="appendChart()" style="height:30px; border-radius:3px">Record value (temp button)</button> -->
               </div>
 
               <div class="trial-list">
 
                 <div class="trial-empty-state">
+
+                  <!-- <div style="width:100%; border: 1px solid var(--red); text-align:center; margin:0px"> -->
+                  <!-- <img style="margin:25px; width:90%;   opacity:.3;" src="assets/empty-state.png">
+                  <h1>To start seeing data, pull back the arm and let it fly!</h1> -->
+
+
+                  <!-- </div> -->
+
 
                   <!-- <h1 class="challenge-header">Welcome to the<br>trebuchet trials!</h1>
                   <h2 class="challenge-description">Select your weights, pull back the arm, and let it fly to start recording your data.</h2> -->
@@ -111,10 +120,11 @@
                 <div id="countdown">10</div>
               </div>
 
-              <div class="challenge-holder">
+              <div id="challenge-holder-1">
                 <h2>Player 1</h2>
                 <h1 class="challenge-header">Launch a projectile with kinetic energy between:</h1>
                 <h1 class="challenge-header" id="kinetic-goal">25 – 30 J</h1>
+                <button class="reset-button"> &nbsp; Skip this challenge &nbsp;</button>
               </div>
 
 
