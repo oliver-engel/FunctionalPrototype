@@ -49,7 +49,7 @@ body {
 }
 
 .brick-bg {
-  background-image : url(assets/brick.png);
+  background-image : url(/assets/brick.png);
 }
 
 canvas {

@@ -7,16 +7,12 @@ First-time functions
 $( document ).ready(function() {
 
   AppearItem();
-
-	// Deactivate challenge section on start
-	$('.showing-challenge').hide();
+	$('.showing-challenge').hide(); // Deactivate challenge section on start
 	$('.challenge-toggler').fadeTo( "fast", .33 );
 
-	// Make sure challenges are hidden on start
-	hideAllChallenges();
+	hideAllChallenges(); // Make sure challenges are hidden on start
 
 });
-
 
 /*--------------------------------------------------
 Adding charts to the list under experiments
@@ -24,9 +20,9 @@ Adding charts to the list under experiments
 
 var trialValue = 0;
 
-function appendChart(){
+function prependChart(className){
 	//DOM material to inject into experiment section
-	$( ".trial-list" ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial #</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; <span id='weight-tracking'>5 Weights</span></section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart' width='400' height='200'></canvas></section></div></div>" );
+	$( className ).prepend( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial #</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; <span id='weight-tracking'>5 Weights</span></section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart' width='400' height='200'></canvas></section></div></div>" );
 
 	console.log("kinetic energy: " +  kineticEnergy);
 
@@ -43,6 +39,11 @@ function appendChart(){
 	//Setting the number of weights used
 	var numWeights = document.getElementById("weight-tracking");
 	numWeights.innerHTML =  globalWeight + " Weights";
+
+}
+
+function appendChart(className){
+  $( className ).append( "<div class='trial' id='trial-x'><div class='trial-header'><section id='trial-number-name'>Trial #</section><section class='weight-number'><i class='fas fa-weight-hanging'></i>&nbsp; <span id='weight-tracking'>5 Weights</span></section></div><div class='trial-potential'><section class='potential-graph'><canvas id='chart' width='400' height='200'></canvas></section></div></div>" );
 
 }
 
@@ -166,6 +167,7 @@ $('.experiment-toggler').on(
   'click',
   function()
   {
+    challengeMode = false;
     $('.showing-experiment').show();
 		$('.showing-challenge').hide();
 		$('.experiment-toggler').fadeTo( "fast", 1 );
@@ -180,6 +182,7 @@ $('.challenge-toggler').on(
   'click',
   function()
   {
+    challengeMode = true;
     $('.showing-experiment').hide();
 		$('.showing-challenge').show();
 		$('.challenge-toggler').fadeTo( "fast", 1 );
@@ -189,52 +192,86 @@ $('.challenge-toggler').on(
   }
 );
 
-var pressTracker=0;
+
+function preload(){
+
+mainSong = loadSound ("assets/interface/medieval.mp3");
+challengeSong = loadSound ("assets/interface/battle.mp3");
+
+}
+
+function togglePlaying(songName){
+  if(!songName.isPlaying()){
+    songName.play();
+
+    var change = document.getElementById("playMute");
+    change.classList.remove("fa-volume-off");
+    change.classList.add("fa-volume-up");
+    
+  }
+  else{
+    songName.pause();
+  }
+}
+
+// function loaded(){
+//   medievalSong.play();
+// }
+
+
+var toggle = true;
 
 //Playing music. Need to fix the icon issue
 function PlaySound(filename) {
 
-				if(pressTracker == 0){
-					var path = "/assets/interface/";
-	        var snd = new Audio(path + filename + ".mp3");
-	        snd.play();
+  var path = "/assets/interface/";
+  var snd = new Audio(path + filename + ".mp3");
 
-					var change = document.getElementById("playMute");
-					change.classList.remove("fa-volume-off");
-					change.classList.add("fa-volume-up");
+	if(toggle){
 
-					pressTracker=1;
-				}
+	   snd.play();
+     var change = document.getElementById("playMute");
+		 change.classList.remove("fa-volume-off");
+		 change.classList.add("fa-volume-up");
 
-				else{
-					// var music = document.getElements("video1");
-					// music.muted = true;
+		 toggle = !toggle;
+     console.log("playgin");
+	}
 
-					var change2 = document.getElementById("playMute");
-					change2.classList.remove("fa-volume-up");
-					// change2.classList.addClass("fa-volume-off");
+	else if (!toggle){
+	   // var music = document.getElements("video1");
+		 // music.muted = true;
+console.log("pausing");
+     snd.pause();
 
-					pressTracker=0;
+		 var change2 = document.getElementById("playMute");
+		 change2.classList.remove("fa-volume-up");
+		 change2.classList.add("fa-volume-off");
+
+		 toggle = true;
+
 				}
 }
 
 var challengeSectionTracker=0;
+var challengeMode = false;
+var goalEnergy = 0;
 
 //The progression of screens for the challenge sidebar
 $(".challenge-advancer").click(function(){
 
-	console.log(challengeSectionTracker);
 	if(challengeSectionTracker == 0){
   	$("#challenge-empty").hide();
-		$("#challenge-players").show();
+		$("#challenge-countdown").show();
+    countdown();
+    goalEnergy = 50;
 		challengeSectionTracker++;
 	}
 
-	else if(challengeSectionTracker = 1){
-		$("#challenge-players").hide();
-		$("#challenge-countdown").show();
-		countdown();
-	}
+  else if(challengeSectionTracker == 1){
+
+    challengeSectionTracker++;
+  }
 });
 
 $(".challenge-decreaser").click(function(){
@@ -262,6 +299,18 @@ $('.grid-4 button').on('click', function(){
 		//Update the number of players
 		numPlayers = $(this).closest(".current-button").attr("id");
 });
+
+
+/*--------------------------------------------------
+CHALLENGE MODE
+---------------------------------------------------*/
+
+// ("#challenge-holder-1")
+
+
+
+
+
 
 
 /*--------------------------------------------------

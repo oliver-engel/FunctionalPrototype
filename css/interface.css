@@ -61,6 +61,16 @@ i{
   font-size: .8em;
 }
 
+audio{
+  background: none;
+}
+
+.trial-empty-state{
+  border: 1px solid var(--red);
+  border-radius: 6px;
+  padding:45px;
+}
+
 .value-large{
   font-size:74px;
   margin-bottom:0px;

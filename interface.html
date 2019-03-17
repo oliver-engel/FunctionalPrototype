@@ -41,7 +41,8 @@
           </div>
         </section>
 
-        <button class="soundButton" onclick="PlaySound('medieval')"> <i class="fas fa-volume-off" id="playMute"></i></button>
+
+        <button class="soundButton" onclick="togglePlaying(challengeSong)"> <i class="fas fa-volume-off" id="playMute"></i></button>
       </div>
 
 
@@ -64,13 +65,15 @@
 
                 <!-- For now, this button records trial data. -->
                 <button class="reset-button" value="Refresh Page" onClick="window.location.reload()">Reset values</button>
-                <!-- <button id="trial-recorder" onclick="appendChart()" style="height:30px; border-radius:3px">Record value (temp button)</button> -->
+                <!-- <button id="trial-recorder" onclick="prependChart()" style="height:30px; border-radius:3px">Record value (temp button)</button> -->
               </div>
 
               <div class="trial-list">
 
                 <div class="trial-empty-state">
 
+                  <img style="width:100%;" src="assets/interface/castle.png">
+                  <h1 style="padding-top:35px; margin-bottom:0px">To start seeing data, pull back the arm and let it fly!</h1>
                   <!-- <div style="width:100%; border: 1px solid var(--red); text-align:center; margin:0px"> -->
                   <!-- <img style="margin:25px; width:90%;   opacity:.3;" src="assets/empty-state.png">
                   <h1>To start seeing data, pull back the arm and let it fly!</h1> -->

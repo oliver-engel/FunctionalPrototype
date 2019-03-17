@@ -22,6 +22,12 @@ var constrained;
 let transparency = 255;
 let cloud_1_x = 0;
 let dim = 80.0;
+var armSwing;
+
+let medievalSong;
+let challengeSong;
+
+
 
 function setup() {
 
@@ -43,6 +49,8 @@ function setup() {
   cloud_1 = loadImage('assets/interface/cloud-1.png');
   sun = loadImage('assets/interface/sun.png');
   moon = loadImage('assets/interface/moon.png');
+
+  medieval = loadImage('assets/interface/moon.png');
 
   //Set up communication port
   serial = new p5.SerialPort();       // make a new instance of the serialport library
@@ -104,6 +112,24 @@ function draw() {
   pop();
 
 
+
+  push();
+    if( challengeMode == true ){
+
+      if(armSwing > 190 && projectile == false){
+        if(kineticEnergy < goalEnergy){ // if less than the goal energy...
+          console.log("yuhhhhh");
+        }
+
+
+      }
+
+    }
+
+
+  pop();
+
+
   // Get the angle; for Arduino-less testing, change inData to mouseX.
   // If you have the arduino set up, change mouseX to inData'.
   // Change the last variable to calibrate the resting position of the arm.
@@ -124,7 +150,7 @@ function draw() {
       translate(575,285);
 
       // Keep the arm between 45 and 270 degrees
-      var armSwing = constrain(angle, 45, 270);
+      armSwing = constrain(angle, 45, 270);
 
       // Rotating the arm
       rotate(-armSwing + 90);
@@ -174,7 +200,8 @@ function draw() {
 
       // Do stuff when the arm hits 190 degrees
       if(armSwing > 190 && projectile == false && chartAppended == false){
-        appendChart(); // add a new chart
+        prependChart(".trial-list"); // add a new chart
+        $(".trial-empty-state").hide();
         chartAppended = true; // turn off chart adding until reset
       }
   pop();
