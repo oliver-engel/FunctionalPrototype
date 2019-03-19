@@ -120,10 +120,7 @@ function draw() {
         if(kineticEnergy < goalEnergy){ // if less than the goal energy...
           console.log("yuhhhhh");
         }
-
-
       }
-
     }
 
 
@@ -143,7 +140,7 @@ function draw() {
   // Scale and translate the whole thing
   // Use this to position the trebuchet
   scale(.4);
-  translate(610,375);
+  translate(690,375);
 
   push();
       // Set the position
